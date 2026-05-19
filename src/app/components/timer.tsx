@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { setTimer, setIsRunning, resetTimer } from '../redux/timerSlice';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {gql} from '@apollo/client';
 import { useMutation } from "@apollo/client/react";
 const ADD_TIMER = gql`
@@ -13,6 +13,8 @@ const ADD_TIMER = gql`
   }
 `;
 export default function Timer() {
+    const [inputValue,setInputValue] = useState('');
+    const [timerValue,setTimerValue] = useState(0);
     const dispatch = useDispatch();
     const { value, isRunning } = useSelector((state: RootState) => state.Timer);
     const [addTimer] = useMutation(ADD_TIMER);
@@ -50,21 +52,24 @@ export default function Timer() {
                 <input
                     type="number"
                     placeholder="Set Seconds"
-                    value={value === 0 ? '' :value}
+                    value={inputValue}
                     onChange={(e) => {
-                        const val = Number(e.target.value);
-                        dispatch(setTimer(val));
-                        dispatch(setIsRunning(false));
+                        const val = e.target.value;
+                    setInputValue(val);
                     }}
                     className="border p-2.5 rounded-xl mb-4  w-full text-center"
                 />
 
-                <div className="text-5xl font-bold mb-6">{value}</div>
+                <div className="text-3xl font-bold mb-6">{value}</div>
 
-                <div className="flex gap-3">
-                    <button onClick={() => handleAction("started")} className="bg-green-500 text-white px-3 text-[12px] py-2 rounded-lg">START</button>
-                    <button onClick={() => handleAction("paused")} className="bg-orange-500 text-white px-3 text-[12px] py-2 rounded-lg">PAUSE</button>
-                    <button onClick={() => handleAction("reset")} className="bg-red-500 text-white px-3 text-[12px] py-2 rounded-lg">RESET</button>
+                <div className="flex gap-2">
+                    <button onClick={() =>{
+                        dispatch(setTimer(Number(inputValue)));
+                     handleAction("started")}}className="bg-green-500 text-white px-3 w-full max-w-xs text-[12px] py-2 rounded-lg">START</button>
+                    <button onClick={() => handleAction("paused")} className="bg-orange-500 text-white w-full max-w-xs px-3 text-[12px] py-2 rounded-lg">PAUSE</button>
+                    <button onClick={() =>{
+                        setInputValue('');
+                     handleAction("reset");}} className="bg-red-500 text-white px-3 w-full max-w-xs text-[12px] py-2 rounded-lg">RESET</button>
                 </div>
             </div>
         </div>
