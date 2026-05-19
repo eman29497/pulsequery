@@ -44,8 +44,8 @@ export default function Timer() {
 
     return (
         <div className="flex min-h-screen flex-col items-center  justify-center bg-gray-100">
-            <div className="bg-white p-6 mx-4 rounded-3xl w-full max-w-sm my-auto border border-gray-200 shadow-lg text-center">
-                <h1 className="text-2xl font-bold mb-5 text-gray-800">Smart Timer </h1>
+            <div className="bg-white p-6 rounded-3xl w-11/12  max-w-xs my-auto border border-gray-200 shadow-lg text-center">
+                <h1 className="text-2xl font-bold mb-4 text-gray-800">Smart Timer </h1>
 
                 <input
                     type="number"
@@ -56,10 +56,10 @@ export default function Timer() {
                         dispatch(setTimer(val));
                         dispatch(setIsRunning(false));
                     }}
-                    className="border p-3 rounded-xl mb-5 w-full text-center"
+                    className="border p-2.5 rounded-xl mb-4  w-full text-center"
                 />
 
-                <div className="text-6xl font-bold mb-8">{value}</div>
+                <div className="text-5xl font-bold mb-6">{value}</div>
 
                 <div className="flex gap-4">
                     <button onClick={() => handleAction("started")} className="bg-green-500 text-white px-6 py-2 rounded-lg">START</button>
