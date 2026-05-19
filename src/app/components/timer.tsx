@@ -61,10 +61,10 @@ export default function Timer() {
 
                 <div className="text-5xl font-bold mb-6">{value}</div>
 
-                <div className="flex gap-4">
-                    <button onClick={() => handleAction("started")} className="bg-green-500 text-white px-6 py-2 rounded-lg">START</button>
-                    <button onClick={() => handleAction("paused")} className="bg-orange-500 text-white px-6 py-2 rounded-lg">PAUSE</button>
-                    <button onClick={() => handleAction("reset")} className="bg-red-500 text-white px-6 py-2 rounded-lg">RESET</button>
+                <div className="flex gap-2">
+                    <button onClick={() => handleAction("started")} className="bg-green-500 text-white px-4 py-2 rounded-lg">START</button>
+                    <button onClick={() => handleAction("paused")} className="bg-orange-500 text-white px-4 py-2 rounded-lg">PAUSE</button>
+                    <button onClick={() => handleAction("reset")} className="bg-red-500 text-white px-4 py-2 rounded-lg">RESET</button>
                 </div>
             </div>
         </div>
