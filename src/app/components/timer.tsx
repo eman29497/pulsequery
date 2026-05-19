@@ -43,14 +43,14 @@ export default function Timer() {
     };
 
     return (
-        <div className="flex min-h-screen flex-col items-center p-4 justify-center bg-gray-100">
+        <div className="flex min-h-screen flex-col items-center px-4 justify-center bg-gray-100">
             <div className="bg-white p-6 rounded-3xl w-full max-w-sm border border-gray-200 shadow-lg text-center">
                 <h1 className="text-2xl font-bold mb-5 text-gray-800">Smart Timer </h1>
 
                 <input
                     type="number"
                     placeholder="Set Seconds"
-                    defaultValue={0}
+                    value={value === 0 ? '' :value}
                     onChange={(e) => {
                         const val = Number(e.target.value);
                         dispatch(setTimer(val));
